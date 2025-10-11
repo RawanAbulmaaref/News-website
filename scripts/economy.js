@@ -233,7 +233,51 @@ window.onclick = (e) => {
     }
 };
 
+// ================================================
+// ================globalEconomyNews Section=======
+// ================================================
 
+const global = document.querySelector('.global-cards');
+globalEconomyNews.forEach((element, i) => {
+    let card = document.createElement('div');
+    card.classList.add('global-card');
+    card.innerHTML = `<div class="global-card-content"><p>${element.title}</p></div>
+    
+    <button>اقرأ المزيد</button>
+    `
+    card.style.backgroundImage = `linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(${element.image})`;
+    global.append(card);
+    let cardBtn = card.querySelector('button');
 
+    card.onmouseover = () => {
+        cardBtn.style.display = 'block';
+        card.style.backgroundImage = `linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 1)
+    ),
+    url(${element.image})`;
+    };
 
+    card.onmouseout = () => {
+        cardBtn.style.display = 'none';
+        card.style.backgroundImage = `linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(${element.image})`;
+    };
 
+    cardBtn.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = element.image;
+        modalTitle.textContent = element.title;
+        modalText.textContent = element.content;
+    };
+})

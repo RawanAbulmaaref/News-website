@@ -281,3 +281,58 @@ globalEconomyNews.forEach((element, i) => {
         modalText.textContent = element.content;
     };
 })
+
+// ================================================
+// ================usMarketsNews&egxNews Section===
+// ================================================
+
+let EgyptMarket = document.querySelector('.EgyptMarket')
+let USMarket = document.querySelector('.USMarket')
+egxNews.forEach((item) => {
+    const marketCard = document.createElement('div');
+    marketCard.classList.add('market-card');
+
+    marketCard.innerHTML = `
+        <div class="image-wrapper">
+            <img src="${item.image}" alt="">
+            <span class="percent">${item.change}</span>
+        </div>
+        <div class="info">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+        </div>
+    `;
+    EgyptMarket.appendChild(marketCard);
+    marketCard.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = item.image;
+        modalTitle.textContent = item.title;
+        modalText.textContent = item.content;
+    }
+});
+usMarketsNews.forEach((item) => {
+    const marketCard = document.createElement('div');
+    marketCard.classList.add('market-card');
+
+    marketCard.innerHTML = `
+        <div class="image-wrapper">
+            <img src="${item.image}" alt="">
+            <span class="percent">${item.change}</span>
+        </div>
+        <div class="info">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+        </div>
+    `;
+    USMarket.appendChild(marketCard);
+    marketCard.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = item.image;
+        modalTitle.textContent = item.title;
+        modalText.textContent = item.content;
+    }
+});
+// ================================================
+// ================usdExchangeData&goldPriceData===
+// ================================================
+

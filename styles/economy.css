@@ -20,7 +20,7 @@ body {
 .slide {
   position: absolute;
   width: 100%;
-  height: 550px;
+  height: 500px;
   /* opacity?? */
   opacity: 0.5;
   background-repeat: no-repeat;
@@ -238,7 +238,7 @@ body {
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: all .3s ease !important;
+  transition: all 0.3s ease !important;
 }
 .global-card:hover {
   cursor: pointer;
@@ -277,4 +277,247 @@ body {
   position: absolute;
   bottom: 8px;
   right: 10px;
+}
+/* // ================================================
+// ================MarketsSection=====================
+// ================================================ */
+
+.markets {
+  background: #f2f5ff;
+  direction: rtl;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 10px;
+}
+.makets-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.market-title {
+  direction: rtl;
+  padding-top: 20px;
+}
+.EgyptMarket .market-title h3 {
+  line-height: 2;
+  padding: 5px;
+  border-right: #a30000 solid 5px;
+  border-radius: 0px 5px 5px 0px;
+}
+.USMarket .market-title h3 {
+  line-height: 2;
+  padding: 5px;
+  border-right: teal solid 5px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.EgyptMarket,
+.USMarket {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
+  width: 45%;
+}
+.market-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper img:hover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transform: scale(1.2);
+}
+.percent {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.info {
+  padding: 10px 12px;
+}
+
+.info h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.info p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ======================================================
+   ================ RWD =================================
+   ====================================================== */
+
+@media (max-width: 1024px) {
+  .content {
+    max-width: 80%;
+    right: 30px;
+    bottom: 40px;
+  }
+
+  .content h2 {
+    font-size: 2.2rem;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+  }
+
+  .global-card {
+    width: 45%;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    width: 95%;
+  }
+
+  .slide {
+    height: 350px;
+  }
+
+  #pre,
+  #nxt {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .content {
+    max-width: 90%;
+    right: 20px;
+    bottom: 30px;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .global-cards {
+    flex-direction: column;
+  }
+
+  .global-card {
+    width: 80%;
+  }
+
+  .makets-container {
+    flex-direction: column;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    height: 250px;
+  }
+
+  .content {
+    position: absolute;
+    max-width: 100%;
+    right: 10px;
+    bottom: 15px;
+    text-align: center;
+  }
+
+  .content h2 {
+    font-size: 1.4rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .content button {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+
+  #pre,
+  #nxt {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .global {
+    width: 95%;
+  }
+
+  .global-card {
+    width: 100%;
+    height: 200px;
+  }
+
+  .markets {
+    width: 95%;
+    padding: 5px;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 100%;
+  }
+
+  .market-card img {
+    height: 120px;
+  }
+
+  .info h3 {
+    font-size: 14px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
 }

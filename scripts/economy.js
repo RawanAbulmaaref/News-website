@@ -140,21 +140,7 @@ const usMarketsNews = [
     },
 ];
 
-// Gold price data for the last 3 months
-const goldPriceData = [
-    { month: 'أكتوبر', value: 1920 },
-    { month: 'نوفمبر', value: 1985 },
-    { month: 'ديسمبر', value: 2045 },
-    { month: 'يناير', value: 2130 },
-];
 
-// USD to EGP exchange rate data for the last 3 months
-const usdExchangeData = [
-    { month: 'أكتوبر', value: 30.85 },
-    { month: 'نوفمبر', value: 30.92 },
-    { month: 'ديسمبر', value: 30.88 },
-    { month: 'يناير', value: 30.95 },
-];
 
 // ================================================
 // ================Slider Section==================
@@ -335,4 +321,94 @@ usMarketsNews.forEach((item) => {
 // ================================================
 // ================usdExchangeData&goldPriceData===
 // ================================================
+// Gold price data for the last 3 months
+const goldPriceData = [
+    { month: 'أكتوبر', value: 1920 },
+    { month: 'نوفمبر', value: 1985 },
+    { month: 'ديسمبر', value: 2045 },
+    { month: 'يناير', value: 2130 },
+];
 
+// USD to EGP exchange rate data for the last 3 months
+const usdExchangeData = [
+    { month: 'أكتوبر', value: 30.85 },
+    { month: 'نوفمبر', value: 30.92 },
+    { month: 'ديسمبر', value: 30.88 },
+    { month: 'يناير', value: 30.95 },
+];
+
+let goldChart = document.getElementById('goldChart')
+let goldChartValues=goldPriceData.map(e=>e.value)
+let usdChart = document.getElementById('usdChart')
+let usdChartValues = usdExchangeData.map(e => e.value)
+// =============================================
+let ctx1 = goldChart.getContext('2d');
+new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: ['أكتوبر', 'نوفمبر', 'ديسمبر', 'يناير'],
+        datasets: [{
+            label:'',
+            data: goldChartValues ,
+            borderColor: '#d4af37',
+            backgroundColor: '#d4af37',
+            tension: 0.3,
+            pointBackgroundColor: '#d4af37',
+            pointRadius: 5,
+            fill: false
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: {
+                grid: { color: '#eee' },
+                ticks: { color: '#555', font: { size: 13 } }
+            },
+            y: {
+                grid: { color: '#eee' },
+                ticks: { color: '#555', font: { size: 12 } }
+            }
+        }
+    }
+});
+// =============================================
+let ctx2 = usdChart.getContext('2d');
+new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ['أكتوبر', 'نوفمبر', 'ديسمبر', 'يناير'],
+        datasets: [{
+            label:'سعر الدولار',
+            data: usdChartValues ,
+            borderColor: '#007bff',
+            backgroundColor: '#007bff',
+            tension: 0.3,
+            pointBackgroundColor: '#007bff',
+            pointRadius: 5,
+            fill: false
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false }
+        },
+        
+        scales: {
+            x: {
+                grid: { color: '#eee' },
+                ticks: { color: '#555', font: { size: 13 } }
+            },
+            y: {
+                grid: { color: '#eee' },
+                ticks: { color: '#555', font: { size: 12 } }
+            }
+        }
+    }
+});

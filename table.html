@@ -84,14 +84,13 @@
 
 const apiKey = "09720fd9f61fe1563e54e47d88b1b0fe4d826733e9c1cc294b3de3f69aff68d3";
 const leagueId = 177; 
-
+const apiUrl =`https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=${leagueId}&APIkey=${apiKey}`
 const tbody = document.querySelector('#leagueTable tbody');
 
-fetch(`https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=${leagueId}&APIkey=${apiKey}`)
-  .then(res => res.json())
-  .then(data => {
-    if(data.success !== 1){
-      console.error("API Error:", data.message);
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => { if(data.success !== 1){
+      console.error("Error:", data.message);
       return;
     }
     const leagueData = data.result.total; 
@@ -118,7 +117,7 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=${leagueI
       tbody.appendChild(row);
     });
   })
-  .catch(err => console.error("Fetch error:", err));
+  .catch(err => console.error("Error:", err));
 
 
 const tickerNews = [

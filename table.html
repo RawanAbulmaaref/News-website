@@ -61,64 +61,86 @@
 
   <script>
   
-const leagueData = [
-    { rank: 1, team: 'الأهلي', played: 20, home: 10, away: 10, wins: 16, draws: 3, losses: 1, goalsFor: 48, goalsAgainst: 12, points: 51 },
-    { rank: 2, team: 'الزمالك', played: 20, home: 10, away: 10, wins: 14, draws: 3, losses: 3, goalsFor: 42, goalsAgainst: 18, points: 45 },
-    { rank: 3, team: 'بيراميدز', played: 20, home: 10, away: 10, wins: 13, draws: 3, losses: 4, goalsFor: 39, goalsAgainst: 20, points: 42 },
-    { rank: 4, team: 'الإسماعيلي', played: 20, home: 10, away: 10, wins: 11, draws: 5, losses: 4, goalsFor: 35, goalsAgainst: 22, points: 38 },
-    { rank: 5, team: 'طلائع الجيش', played: 20, home: 10, away: 10, wins: 10, draws: 6, losses: 4, goalsFor: 32, goalsAgainst: 24, points: 36 },
-    { rank: 6, team: 'المصري', played: 20, home: 10, away: 10, wins: 9, draws: 7, losses: 4, goalsFor: 30, goalsAgainst: 22, points: 34 },
-    { rank: 7, team: 'سيراميكا', played: 20, home: 10, away: 10, wins: 8, draws: 8, losses: 4, goalsFor: 28, goalsAgainst: 20, points: 32 },
-    { rank: 8, team: 'المقاولون', played: 20, home: 10, away: 10, wins: 8, draws: 6, losses: 6, goalsFor: 26, goalsAgainst: 24, points: 30 },
-    { rank: 9, team: 'إنبي', played: 20, home: 10, away: 10, wins: 7, draws: 7, losses: 6, goalsFor: 24, goalsAgainst: 25, points: 28 },
-    { rank: 10, team: 'الجونة', played: 20, home: 10, away: 10, wins: 6, draws: 8, losses: 6, goalsFor: 22, goalsAgainst: 26, points: 26 },
-    { rank: 11, team: 'البنك الأهلي', played: 20, home: 10, away: 10, wins: 5, draws: 9, losses: 6, goalsFor: 20, goalsAgainst: 24, points: 24 },
-    { rank: 12, team: 'الاتحاد السكندري', played: 20, home: 10, away: 10, wins: 5, draws: 7, losses: 8, goalsFor: 18, goalsAgainst: 28, points: 22 },
-    { rank: 13, team: 'سموحة', played: 20, home: 10, away: 10, wins: 4, draws: 8, losses: 8, goalsFor: 16, goalsAgainst: 28, points: 20 },
-    { rank: 14, team: 'الداخلية', played: 20, home: 10, away: 10, wins: 4, draws: 6, losses: 10, goalsFor: 14, goalsAgainst: 30, points: 18 },
-    { rank: 15, team: 'فاركو', played: 20, home: 10, away: 10, wins: 3, draws: 7, losses: 10, goalsFor: 12, goalsAgainst: 32, points: 16 },
-    { rank: 16, team: 'الجزيرة', played: 20, home: 10, away: 10, wins: 2, draws: 6, losses: 12, goalsFor: 10, goalsAgainst: 35, points: 12 },
-    { rank: 17, team: 'وادي دجلة', played: 20, home: 10, away: 10, wins: 2, draws: 5, losses: 13, goalsFor: 9, goalsAgainst: 38, points: 11 },
-    { rank: 18, team: 'الإنتاج الحربي', played: 20, home: 10, away: 10, wins: 1, draws: 4, losses: 15, goalsFor: 8, goalsAgainst: 42, points: 7 },
-];
+// const leagueData = [
+//     { rank: 1, team: 'الأهلي', played: 20, home: 10, away: 10, wins: 16, draws: 3, losses: 1, goalsFor: 48, goalsAgainst: 12, points: 51 },
+//     { rank: 2, team: 'الزمالك', played: 20, home: 10, away: 10, wins: 14, draws: 3, losses: 3, goalsFor: 42, goalsAgainst: 18, points: 45 },
+//     { rank: 3, team: 'بيراميدز', played: 20, home: 10, away: 10, wins: 13, draws: 3, losses: 4, goalsFor: 39, goalsAgainst: 20, points: 42 },
+//     { rank: 4, team: 'الإسماعيلي', played: 20, home: 10, away: 10, wins: 11, draws: 5, losses: 4, goalsFor: 35, goalsAgainst: 22, points: 38 },
+//     { rank: 5, team: 'طلائع الجيش', played: 20, home: 10, away: 10, wins: 10, draws: 6, losses: 4, goalsFor: 32, goalsAgainst: 24, points: 36 },
+//     { rank: 6, team: 'المصري', played: 20, home: 10, away: 10, wins: 9, draws: 7, losses: 4, goalsFor: 30, goalsAgainst: 22, points: 34 },
+//     { rank: 7, team: 'سيراميكا', played: 20, home: 10, away: 10, wins: 8, draws: 8, losses: 4, goalsFor: 28, goalsAgainst: 20, points: 32 },
+//     { rank: 8, team: 'المقاولون', played: 20, home: 10, away: 10, wins: 8, draws: 6, losses: 6, goalsFor: 26, goalsAgainst: 24, points: 30 },
+//     { rank: 9, team: 'إنبي', played: 20, home: 10, away: 10, wins: 7, draws: 7, losses: 6, goalsFor: 24, goalsAgainst: 25, points: 28 },
+//     { rank: 10, team: 'الجونة', played: 20, home: 10, away: 10, wins: 6, draws: 8, losses: 6, goalsFor: 22, goalsAgainst: 26, points: 26 },
+//     { rank: 11, team: 'البنك الأهلي', played: 20, home: 10, away: 10, wins: 5, draws: 9, losses: 6, goalsFor: 20, goalsAgainst: 24, points: 24 },
+//     { rank: 12, team: 'الاتحاد السكندري', played: 20, home: 10, away: 10, wins: 5, draws: 7, losses: 8, goalsFor: 18, goalsAgainst: 28, points: 22 },
+//     { rank: 13, team: 'سموحة', played: 20, home: 10, away: 10, wins: 4, draws: 8, losses: 8, goalsFor: 16, goalsAgainst: 28, points: 20 },
+//     { rank: 14, team: 'الداخلية', played: 20, home: 10, away: 10, wins: 4, draws: 6, losses: 10, goalsFor: 14, goalsAgainst: 30, points: 18 },
+//     { rank: 15, team: 'فاركو', played: 20, home: 10, away: 10, wins: 3, draws: 7, losses: 10, goalsFor: 12, goalsAgainst: 32, points: 16 },
+//     { rank: 16, team: 'الجزيرة', played: 20, home: 10, away: 10, wins: 2, draws: 6, losses: 12, goalsFor: 10, goalsAgainst: 35, points: 12 },
+//     { rank: 17, team: 'وادي دجلة', played: 20, home: 10, away: 10, wins: 2, draws: 5, losses: 13, goalsFor: 9, goalsAgainst: 38, points: 11 },
+//     { rank: 18, team: 'الإنتاج الحربي', played: 20, home: 10, away: 10, wins: 1, draws: 4, losses: 15, goalsFor: 8, goalsAgainst: 42, points: 7 },
+// ];
+
+const apiKey = "09720fd9f61fe1563e54e47d88b1b0fe4d826733e9c1cc294b3de3f69aff68d3";
+const leagueId = 177; 
 
 const tbody = document.querySelector('#leagueTable tbody');
 
-leagueData.forEach(team => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td><span class="circle2">${team.rank}</span></td>
-        <td>${team.team}</td>
-        <td>${team.played}</td>
-        <td>${team.home}</td>
-        <td>${team.away}</td>
-        <td>${team.wins}</td>
-        <td>${team.draws}</td>
-        <td>${team.losses}</td>
-        <td>${team.goalsFor}</td>
-        <td>${team.goalsAgainst}</td>
-        <td><span class="circle">${team.points}</span></td>
-    `;
-    tbody.appendChild(row);
+fetch(`https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=${leagueId}&APIkey=${apiKey}`)
+  .then(res => res.json())
+  .then(data => {
+    if(data.success !== 1){
+      console.error("API Error:", data.message);
+      return;
+    }
+    const leagueData = data.result.total; 
+    tbody.innerHTML = ""; 
+    leagueData.forEach(team => {
+      const row = document.createElement('tr');
+      let rowClass = "";
+      if(team.standing_place_type.includes("CAF Champions League")) rowClass = "champions";
+      if(team.standing_place_type.includes("Relegation")) rowClass = "confed";
+
+      row.innerHTML = `
+        <td><span class="circle2 ${rowClass}">${team.standing_place}</span></td>
+        <td>${team.standing_team}</td>
+        <td>${team.standing_P}</td>
+        <td>${team.standing_HP || 0}</td>
+        <td>${team.standing_AP || 0}</td>
+        <td>${team.standing_W}</td>
+        <td>${team.standing_D}</td>
+        <td>${team.standing_L}</td>
+        <td>${team.standing_F}</td>
+        <td>${team.standing_A}</td>
+        <td><span class="circle">${team.standing_PTS}</span></td>
+      `;
+      tbody.appendChild(row);
+    });
+  })
+  .catch(err => console.error("Fetch error:", err));
+
+
+const tickerNews = [
+  'الأهلي يتأهل لنهائي دوري أبطال أفريقيا',
+  'ارتفاع أسعار الذهب عالمياً',
+  'الرئيس يفتتح مشروع تنموي جديد',
+  'منتخب مصر يستعد لمواجهة حاسمة',
+  'تطورات جديدة في الأوضاع الاقتصادية',
+  'افتتاح معرض القاهرة الدولي للكتاب',
+];
+
+const marqueeElement = document.getElementById('newsMarquee');
+
+tickerNews.forEach(newsItem => {
+  const span = document.createElement('span');
+  span.className = 'news';
+  span.textContent = newsItem;
+  marqueeElement.appendChild(span);
 });
 
-    const tickerNews = [
-      'الأهلي يتأهل لنهائي دوري أبطال أفريقيا',
-      'ارتفاع أسعار الذهب عالمياً',
-      'الرئيس يفتتح مشروع تنموي جديد',
-      'منتخب مصر يستعد لمواجهة حاسمة',
-      'تطورات جديدة في الأوضاع الاقتصادية',
-      'افتتاح معرض القاهرة الدولي للكتاب',
-    ];
 
-    const marqueeElement = document.getElementById('newsMarquee');
 
-    tickerNews.forEach(newsItem => {
-      const span = document.createElement('span');
-      span.className = 'news';
-      span.textContent = newsItem;
-      marqueeElement.appendChild(span);
-    });
   </script>
 
 </body>

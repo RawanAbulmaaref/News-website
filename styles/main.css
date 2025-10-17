@@ -1,12 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: "Open Sans", sans-serif;
- 
-}
-
-
 /* start setting-box  */
 .setting-box {
   position: fixed;
@@ -31,6 +22,7 @@ body {
   background-color: transparent;
   cursor: pointer;
   transition: 0.5s;
+  margin-left: 25px;
 }
 .setting-box span.close-x {
   font-size: 20px;
@@ -69,17 +61,27 @@ span.close-x:hover{
 }
 .setting-text:hover {
   background-color: #0089EE;
-  color: #eee;
   cursor: pointer;
 }
 .setting-text .option-text {
   text-align: end;
     font-weight:100;
-
+    
+}
+.option-text:hover{
+  color: #eee;
 }
 .option-span {
   font-weight: bold;
   padding-right: 5px;
+   text-decoration: none;
+   color: black;
+}
+.option-span:hover {
+  font-weight: bold;
+  padding-right: 5px;
+   text-decoration: none;
+   color: white
 }
 
 
@@ -125,22 +127,14 @@ span.close-x:hover{
       font-size: 14px;
       color: #333;
     }
-      #city,#humidity,#description,#temp{
-      padding-left:5px ;
-      padding-right: 5px;
-     
-    }
 /* end nav  */
     @media (max-width: 768px) {
        .setting-box .icon{
          right: -75px !important;
       }
       /* .left {
-        display: none !important; 
+        display: none; 
       } */
-      .price,#humidity,#description{
-      display: none !important;
-      }
 
       nav {
         justify-content: flex-start; 

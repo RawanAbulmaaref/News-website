@@ -22,6 +22,7 @@ body {
 }
 
 #sports {
+      direction: rtl;
     /* height: 70vh; */
     .matches {
         display: flex;
@@ -187,9 +188,7 @@ body {
   }
   .sports-news-card {
     width: 500px !important;
-     
   }
-  
 }
 @media (max-width: 991px) {
   .sports-container {
@@ -222,13 +221,4 @@ body {
   .sports-container {
     max-width: 100%;
   }
-}
-/* إخفاء باقي الأقسام وإظهار فقط كروت الأخبار الرياضية */
-.matches,
-.sports-table {
-    display: none !important;
-}
-
-.sports-news {
-    display: block !important;
 }

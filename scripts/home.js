@@ -29,7 +29,7 @@ document.querySelector("#currency").innerHTML=egp
  }).catch(Error=>console.log(Error))
 
 
-// end nav 
+
 
 
 

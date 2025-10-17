@@ -1,144 +1,94 @@
 // ================================================
 // ================Data Section====================
 // ================================================
-const economicHeadlines = [
-    {
-        id: 2,
-        title: 'أسعار الذهب تصل لمستويات قياسية جديدة',
-        description: 'المعدن الأصفر يواصل مكاسبه القوية وسط توترات جيوسياسية عالمية',
-        image: 'https://images.unsplash.com/photo-1642744901889-9efbec703430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwYmFycyUyMHdlYWx0aHxlbnwxfHx8fDE3NjAyMDM3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        category: 'أسواق',
-        content: 'سجلت أسعار الذهب العالمية مستويات قياسية جديدة، متجاوزة حاجز 2100 دولار للأوقية، مدفوعة بالطلب المتزايد كملاذ آمن...',
-    },
-    {
-        id: 1,
-        title: 'البورصة المصرية تسجل أعلى إغلاق في تاريخها',
-        description: 'مؤشر EGX30 يتجاوز حاجز الـ30 ألف نقطة بدعم من تدفقات أجنبية ضخمة',
-        image: 'https://images.unsplash.com/photo-1666467831470-8f26f983391f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmd8ZW58MXx8fHwxNzYwMTA0Nzc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        category: 'عاجل',
-        content: 'حققت البورصة المصرية إنجازاً تاريخياً جديداً بتسجيل أعلى إغلاق في تاريخها، حيث تجاوز مؤشر EGX30 حاجز الـ30 ألف نقطة للمرة الأولى...',
-    },
-    {
-        id: 3,
-        title: 'الاحتياطي النقدي يرتفع لـ46 مليار دولار',
-        description: 'زيادة قياسية في الاحتياطيات الأجنبية تعكس قوة الاقتصاد المصري',
-        image: 'https://images.unsplash.com/photo-1607623198457-7aad066a4ade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXJyZW5jeSUyMG1vbmV5JTIwZXhjaGFuZ2V8ZW58MXx8fHwxNzYwMTIyODI4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        category: 'اقتصاد كلي',
-        content: 'أعلن البنك المركزي المصري عن ارتفاع صافي الاحتياطيات الدولية من النقد الأجنبي إلى 46 مليار دولار، في إشارة إيجابية...',
-    },
-    {
-        id: 4,
-        title: 'البنك المركزي يثبت أسعار الفائدة',
-        description: 'لجنة السياسة النقدية تقرر الإبقاء على المعدلات الحالية',
-        image: 'https://images.unsplash.com/photo-1705588852021-033b238d8617?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYW5raW5nJTIwZmluYW5jaWFsfGVufDF8fHx8MTc2MDIwMzcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
-        category: 'بنوك',
-        content: 'قررت لجنة السياسة النقدية بالبنك المركزي المصري الإبقاء على أسعار الفائدة دون تغيير للاجتماع الثالث على التوالي...',
-    },
-    {
-        id: 5,
-        title: 'استثمارات أجنبية بـ15 مليار دولار خلال 2025',
-        description: 'تدفقات قياسية للاستثمارات الأجنبية المباشرة في مختلف القطاعات',
-        image: 'https://images.unsplash.com/photo-1559067096-49ebca3406aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnZlc3RtZW50JTIwZmluYW5jZXxlbnwxfHx8fDE3NjAwOTExMDN8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        category: 'استثمار',
-        content: 'شهدت مصر تدفقات استثمارية أجنبية مباشرة بقيمة 15 مليار دولار خلال العام الجاري، في مؤشر على جاذبية الاقتصاد المصري...',
-    },
-];
+// weather api 
+const weatherCity = `Cairo`
+const countryCode = `EG`
+const weatherKey = 'ab3199dbf67ac8107e758cc858527b99'
+const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity},${countryCode}&appid=${weatherKey}&units=metric&lang=ar`
+fetch(weatherEndPoint).then(response =>
+    response.json())
+    .then(data => {
+        const temp = data.main.temp;
+        const cityName = data.name
+        const humidity = data.main.humidity
+        const description = data.weather[0].description
+        document.getElementById("temp").innerHTML = `درجة الحرارة ℃${temp}`
+        document.getElementById("humidity").innerHTML = ` الرطوبة ${humidity}`
+        document.getElementById("description").innerHTML = ` حالة الطقس: (${description}) `
+        document.getElementById("city").innerHTML = data.name
+    }).catch(Error => console.log(Error))
 
-// Global Economy News
-const globalEconomyNews = [
-    {
-        id: 101,
-        title: 'الاقتصاد العالمي ينمو بنسبة 3.2% في 2025',
-        image: 'https://images.unsplash.com/photo-1579846703547-7190c9b1b460?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBlY29ub215JTIwYnVzaW5lc3N8ZW58MXx8fHwxNzYwMjAzNzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'توقع صندوق النقد الدولي نمو الاقتصاد العالمي بنسبة 3.2% خلال العام الحالي، مدفوعاً بالتعافي القوي للاقتصادات الناشئة...',
-    },
-    {
-        id: 102,
-        title: 'دول الخليج تحقق فوائض ضخمة من ارتفاع النفط',
-        image: 'https://images.unsplash.com/photo-1666467831470-8f26f983391f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmd8ZW58MXx8fHwxNzYwMTA0Nzc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'استفادت دول مجلس التعاون الخليجي من ارتفاع أسعار النفط لتسجل فوائض مالية تاريخية تتجاوز 200 مليار دولار...',
-    },
-    {
-        id: 103,
-        title: 'الاتحاد الأوروبي يخفض توقعات النمو',
-        image: 'https://images.unsplash.com/photo-1705588852021-033b238d8617?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYW5raW5nJTIwZmluYW5jaWFsfGVufDF8fHx8MTc2MDIwMzcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'خفضت المفوضية الأوروبية توقعاتها للنمو الاقتصادي في منطقة اليورو بسبب التحديات الطاقية والتضخم المرتفع...',
-    },
-    {
-        id: 104,
-        title: 'الصين تعلن عن حزمة تحفيز اقتصادي جديدة',
-        image: 'https://images.unsplash.com/photo-1559067096-49ebca3406aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnZlc3RtZW50JTIwZmluYW5jZXxlbnwxfHx8fDE3NjAwOTExMDN8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'أعلنت الحكومة الصينية عن حزمة تحفيز اقتصادي بقيمة 500 مليار يوان لدعم النمو وتعزيز الاستهلاك المحلي...',
-    },
-    {
-        id: 105,
-        title: 'التجارة العالمية تتعافى بقوة في الربع الأول',
-        image: 'https://images.unsplash.com/photo-1579846703547-7190c9b1b460?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBlY29ub215JTIwYnVzaW5lc3N8ZW58MXx8fHwxNzYwMjAzNzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'شهدت التجارة العالمية انتعاشاً ملحوظاً في الربع الأول من العام، مع زيادة حجم الصادرات والواردات بنسبة 8%...',
-    },
-    {
-        id: 106,
-        title: 'أسعار السلع الغذائية ترتفع عالمياً',
-        image: 'https://images.unsplash.com/photo-1607623198457-7aad066a4ade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXJyZW5jeSUyMG1vbmV5JTIwZXhjaGFuZ2V8ZW58MXx8fHwxNzYwMTIyODI4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        content: 'ارتفعت أسعار السلع الغذائية العالمية بنسبة 12% على أساس سنوي، مدفوعة بالطلب القوي ونقص المعروض...',
-    },
-];
+// currency api 
+const currencyKey = '3c8da38fe19cd241bfa47fcc'
+const currencyEndPoint = `https://v6.exchangerate-api.com/v6/3c8da38fe19cd241bfa47fcc/latest/USD`
+fetch(currencyEndPoint).then(response =>
+    response.json()
+)
+    .then(data => {
+        const egp = data.conversion_rates.EGP;
+        document.querySelector("#currency").innerHTML = egp
 
-// Egyptian Stock Exchange News
-const egxNews = [
-    {
-        id: 201,
-        title: 'البنك التجاري الدولي يحقق أرباحاً قياسية',
-        description: 'صافي الأرباح يرتفع 45% في الربع الأول',
-        image: 'https://images.unsplash.com/photo-1705588852021-033b238d8617?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYW5raW5nJTIwZmluYW5jaWFsfGVufDF8fHx8MTc2MDIwMzcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 5.2,
-        content: 'أعلن البنك التجاري الدولي عن ارتفاع صافي الأرباح بنسبة 45% لتصل إلى 8.2 مليار جنيه...',
-    },
-    {
-        id: 202,
-        title: 'المصرية للاتصالات تعلن عن توزيعات أرباح',
-        description: 'مجلس الإدارة يوافق على توزيع 2.5 جنيه للسهم',
-        image: 'https://images.unsplash.com/photo-1666467831470-8f26f983391f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmd8ZW58MXx8fHwxNzYwMTA0Nzc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 3.8,
-        content: 'وافق مجلس إدارة المصرية للاتصالات على توزيع أرباح نقدية بقيمة 2.5 جنيه للسهم الواحد...',
-    },
-    {
-        id: 203,
-        title: 'أوراسكوم للإنشاء توقع عقوداً بـ3 مليار دولار',
-        description: 'مشروعات جديدة في الشرق الأوسط وأفريقيا',
-        image: 'https://images.unsplash.com/photo-1559067096-49ebca3406aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnZlc3RtZW50JTIwZmluYW5jZXxlbnwxfHx8fDE3NjAwOTExMDN8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 7.1,
-        content: 'نجحت شركة أوراسكوم للإنشاء في الحصول على عقود جديدة بقيمة 3 مليار دولار في عدة دول...',
-    },
-];
+    }).catch(Error => console.log(Error))
 
-// US Stock Markets News
-const usMarketsNews = [
-    {
-        id: 301,
-        title: 'ناسداك يسجل ارتفاعاً قياسياً',
-        description: 'أسهم التكنولوجيا تقود المكاسب القوية',
-        image: 'https://images.unsplash.com/photo-1666467831470-8f26f983391f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmd8ZW58MXx8fHwxNzYwMTA0Nzc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 2.4,
-        content: 'أغلق مؤشر ناسداك على ارتفاع قياسي جديد مدفوعاً بمكاسب قوية لأسهم شركات التكنولوجيا الكبرى...',
-    },
-    {
-        id: 302,
-        title: 'أبل تعلن عن نتائج مالية مبهرة',
-        description: 'الإيرادات تتجاوز التوقعات بفضل مبيعات آيفون',
-        image: 'https://images.unsplash.com/photo-1579846703547-7190c9b1b460?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBlY29ub215JTIwYnVzaW5lc3N8ZW58MXx8fHwxNzYwMjAzNzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 4.5,
-        content: 'حققت شركة أبل إيرادات قياسية في الربع المالي الأخير، متجاوزة توقعات المحللين بفضل المبيعات القوية...',
-    },
-    {
-        id: 303,
-        title: 'تسلا تعلن عن خطة توسع عالمية',
-        description: 'افتتاح مصانع جديدة في آسيا وأوروبا',
-        image: 'https://images.unsplash.com/photo-1705588852021-033b238d8617?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYW5raW5nJTIwZmluYW5jaWFsfGVufDF8fHx8MTc2MDIwMzcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
-        change: 6.2,
-        content: 'كشفت شركة تسلا عن خططها لافتتاح مصانع جديدة للسيارات الكهربائية في عدة دول آسيوية وأوروبية...',
-    },
-];
+
+
+
+
+
+    
+
+let economicHeadlines = [];
+const getEconomicHeadlines = async () => {
+    try {
+        let res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_2667674e0e7f49d68db1b630c5c0a2af&category=business&language=ar`)
+        let Edata = await res.json()
+        economicHeadlines = Edata.results.filter(Ed => Ed.image_url != null)
+            return economicHeadlines
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+let globalEconomyNews=[]
+const getGlobalEconomyNews = async () => {
+    try {
+        let res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_2667674e0e7f49d68db1b630c5c0a2af&category=business&language=ar`)
+        let Edata = await res.json()
+        globalEconomyNews = Edata.results.filter(Ed => Ed.image_url != null)
+        return globalEconomyNews
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+let egxNews = [];
+const getEgxNews = async () => {
+    try {
+        let res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_2667674e0e7f49d68db1b630c5c0a2af&category=business&language=ar&country=eg`)
+        let Edata = await res.json()
+        egxNews = Edata.results.filter(Ed => Ed.image_url != null)
+        return egxNews
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+let usMarketsNews = [];
+const getUsMarketsNews = async () => {
+    try {
+        let res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_2667674e0e7f49d68db1b630c5c0a2af&category=business&language=ar&country=us`)
+        let Edata = await res.json()
+        usMarketsNews = Edata.results.filter(Ed => Ed.image_url != null)
+        return usMarketsNews
+
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 
 
@@ -156,27 +106,38 @@ const modalText = document.getElementById('modal-text');
 const closeBtn = document.querySelector('.close');
 
 
-economicHeadlines.forEach((element, i) => {
-    let slide = document.createElement('div');
-    slide.classList.add('slide')
-    if (i === 0) slide.classList.add('active');
-    slide.style.backgroundImage = `linear-gradient(
+getEconomicHeadlines().then(() => {
+    economicHeadlines.slice(0,5).forEach((element, i) => {
+        let slide = document.createElement('div');
+        slide.classList.add('slide')
+        if (i === 0) slide.classList.add('active');
+        slide.style.backgroundImage = `linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.9)
     ),
-    url(${element.image})`;
-    // ================================
-    slide.innerHTML = `<div class="content">
-      <span class="category">${element.category}</span>
+    url(${element.image_url})`;
+        // ================================
+        slide.innerHTML = `<div class="content">
+      <span class="category">${element.category[0]||'اخبار'}</span>
       <h2>${element.title}</h2>
-      <p>${element.description}</p>
+      <p>${element.description.slice(0,60)+'...'}</p>
       <button class="readmore">اقرأ المزيد</button>
     </div>`
 
-    slider.appendChild(slide)
-    dots[currentSlide].classList.add('active')
-});
+        slider.appendChild(slide)
+        dots[currentSlide].classList.add('active')
+
+        document.querySelectorAll('.readmore').forEach(btn => {
+            btn.onclick = () => {
+                modal.style.display = 'flex';
+                modalImg.src = economicHeadlines[currentSlide].image_url;
+                modalTitle.textContent = economicHeadlines[currentSlide].title;
+                modalText.textContent = economicHeadlines[currentSlide].description;
+            };
+        });
+    });
+})
 
 const nxt = document.getElementById('nxt')
 const pre = document.getElementById('pre')
@@ -198,18 +159,7 @@ pre.onclick = () => changeDir(-1)
 setInterval(() => {
     changeDir(1)
 }, 2000)
-// ================================================
-// ================modal Section===================
-// ================================================
 
-document.querySelectorAll('.readmore').forEach(btn => {
-    btn.onclick = () => {
-        modal.style.display = 'flex';
-        modalImg.src = economicHeadlines[currentSlide].image;
-        modalTitle.textContent = economicHeadlines[currentSlide].title;
-        modalText.textContent = economicHeadlines[currentSlide].content;
-    };
-});
 
 closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = (e) => {
@@ -223,49 +173,51 @@ window.onclick = (e) => {
 // ================globalEconomyNews Section=======
 // ================================================
 
-const global = document.querySelector('.global-cards');
-globalEconomyNews.forEach((element, i) => {
-    let card = document.createElement('div');
-    card.classList.add('global-card');
-    card.innerHTML = `<div class="global-card-content"><p>${element.title}</p></div>
+getGlobalEconomyNews().then(() => {
+    const global = document.querySelector('.global-cards');
+    globalEconomyNews.slice(0,6).forEach((element, i) => {
+        let card = document.createElement('div');
+        card.classList.add('global-card');
+        card.innerHTML = `<div class="global-card-content"><p>${element.title}</p></div>
     
     <button>اقرأ المزيد</button>
     `
-    card.style.backgroundImage = `linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(${element.image})`;
-    global.append(card);
-    let cardBtn = card.querySelector('button');
-
-    card.onmouseover = () => {
-        cardBtn.style.display = 'block';
         card.style.backgroundImage = `linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(${element.image_url})`;
+        global.append(card);
+        let cardBtn = card.querySelector('button');
+
+        card.onmouseover = () => {
+            cardBtn.style.display = 'block';
+            card.style.backgroundImage = `linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 1)
     ),
-    url(${element.image})`;
-    };
+    url(${element.image_url})`;
+        };
 
-    card.onmouseout = () => {
-        cardBtn.style.display = 'none';
-        card.style.backgroundImage = `linear-gradient(
+        card.onmouseout = () => {
+            cardBtn.style.display = 'none';
+            card.style.backgroundImage = `linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.4)
     ),
-    url(${element.image})`;
-    };
+    url(${element.image_url})`;
+        };
 
-    cardBtn.onclick = () => {
-        modal.style.display = 'flex';
-        modalImg.src = element.image;
-        modalTitle.textContent = element.title;
-        modalText.textContent = element.content;
-    };
+        cardBtn.onclick = () => {
+            modal.style.display = 'flex';
+            modalImg.src = element.image_url;
+            modalTitle.textContent = element.title;
+            modalText.textContent = element.description;
+        };
+    })
 })
 
 // ================================================
@@ -274,50 +226,54 @@ globalEconomyNews.forEach((element, i) => {
 
 let EgyptMarket = document.querySelector('.EgyptMarket')
 let USMarket = document.querySelector('.USMarket')
-egxNews.forEach((item) => {
-    const marketCard = document.createElement('div');
-    marketCard.classList.add('market-card');
+getEgxNews().then(() => {
+    egxNews.slice(0,3).forEach((item) => {
+        const marketCard = document.createElement('div');
+        marketCard.classList.add('market-card');
 
-    marketCard.innerHTML = `
+        marketCard.innerHTML = `
         <div class="image-wrapper">
-            <img src="${item.image}" alt="">
-            <span class="percent">${item.change}</span>
+            <img src="${item.image_url}" alt="">
+            <span class="percent">${item.change||'5'}</span>
         </div>
         <div class="info">
             <h3>${item.title}</h3>
-            <p>${item.description}</p>
+            <p>${item.description.slice(0, 60) + '...'}</p>
         </div>
     `;
-    EgyptMarket.appendChild(marketCard);
-    marketCard.onclick = () => {
-        modal.style.display = 'flex';
-        modalImg.src = item.image;
-        modalTitle.textContent = item.title;
-        modalText.textContent = item.content;
-    }
-});
-usMarketsNews.forEach((item) => {
-    const marketCard = document.createElement('div');
-    marketCard.classList.add('market-card');
+        EgyptMarket.appendChild(marketCard);
+        marketCard.onclick = () => {
+            modal.style.display = 'flex';
+            modalImg.src = item.image_url;
+            modalTitle.textContent = item.title;
+            modalText.textContent = item.description;
+        }
+    });
+})
+getUsMarketsNews().then(() => {
+    usMarketsNews.forEach((item) => {
+        const marketCard = document.createElement('div');
+        marketCard.classList.add('market-card');
 
-    marketCard.innerHTML = `
+        marketCard.innerHTML = `
         <div class="image-wrapper">
-            <img src="${item.image}" alt="">
-            <span class="percent">${item.change}</span>
+            <img src="${item.image_url}" alt="">
+            <span class="percent">${item.change || '5'}</span>
         </div>
         <div class="info">
             <h3>${item.title}</h3>
-            <p>${item.description}</p>
+            <p>${item.description.slice(0, 60) + '...'}</p>
         </div>
     `;
-    USMarket.appendChild(marketCard);
-    marketCard.onclick = () => {
-        modal.style.display = 'flex';
-        modalImg.src = item.image;
-        modalTitle.textContent = item.title;
-        modalText.textContent = item.content;
-    }
-});
+        USMarket.appendChild(marketCard);
+        marketCard.onclick = () => {
+            modal.style.display = 'flex';
+            modalImg.src = item.image_url;
+            modalTitle.textContent = item.title;
+            modalText.textContent = item.content;
+        }
+    });
+})
 // ================================================
 // ================usdExchangeData&goldPriceData===
 // ================================================
@@ -338,7 +294,7 @@ const usdExchangeData = [
 ];
 
 let goldChart = document.getElementById('goldChart')
-let goldChartValues=goldPriceData.map(e=>e.value)
+let goldChartValues = goldPriceData.map(e => e.value)
 let usdChart = document.getElementById('usdChart')
 let usdChartValues = usdExchangeData.map(e => e.value)
 // =============================================
@@ -348,8 +304,8 @@ new Chart(ctx1, {
     data: {
         labels: ['أكتوبر', 'نوفمبر', 'ديسمبر', 'يناير'],
         datasets: [{
-            label:'',
-            data: goldChartValues ,
+            label: '',
+            data: goldChartValues,
             borderColor: '#d4af37',
             backgroundColor: '#d4af37',
             tension: 0.3,
@@ -383,8 +339,8 @@ new Chart(ctx2, {
     data: {
         labels: ['أكتوبر', 'نوفمبر', 'ديسمبر', 'يناير'],
         datasets: [{
-            label:'سعر الدولار',
-            data: usdChartValues ,
+            label: 'سعر الدولار',
+            data: usdChartValues,
             borderColor: '#007bff',
             backgroundColor: '#007bff',
             tension: 0.3,
@@ -399,7 +355,7 @@ new Chart(ctx2, {
         plugins: {
             legend: { display: false }
         },
-        
+
         scales: {
             x: {
                 grid: { color: '#eee' },

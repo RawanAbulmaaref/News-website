@@ -24,7 +24,7 @@
   </head>
   <body>
     <!-- start setting-box -->
-    <div class="setting-box">
+<div class="setting-box">
       <div class="icon">
         <i class="fa fa-bars"></i>
       </div>
@@ -33,21 +33,21 @@
 
         <div class="setting-text first">
           <div class="option-text">
-            <span class="option-span">الرئيسية</span>
+            <a class="option-span" href="../index.html">الرئيسية</a>
             <i class="fa-solid fa-house"></i>
           </div>
         </div>
 
         <div class="setting-text">
           <div class="option-text">
-            <span class="option-span">الرياضة</span>
+            <a class="option-span" href="./pages/sports.html">الرياضة</a>
             <i class="fa-solid fa-futbol"></i>
           </div>
         </div>
 
         <div class="setting-text">
           <div class="option-text">
-            <span class="option-span">الاقتصاد</span>
+            <a class="option-span" href="./pages/economy.html">الاقتصاد</a>
             <i class="fa-solid fa-chart-line"></i>
           </div>
         </div>
@@ -55,10 +55,12 @@
     </div>
 
     <nav>
-      <!-- Left side -->
       <div class="left">
-        <div class="price"><span>$</span> 30.90 ج.م</div>
-        <div class="time">🕒 18:30 المغرب</div>
+        <div class="price"><span>$</span><span id="currency"></span> ج.م</div>
+        <div class="time">
+          <span id="temp"></span><span id="humidity"></span
+          ><span id="description"></span> <span id="city"></span>
+        </div>
       </div>
     </nav>
     <div class="center">
@@ -75,6 +77,7 @@
         id="newsMarquee"
       ></marquee>
     </div>
+
     <main>
       <section class="container">
         <section class="slider">

@@ -22,7 +22,6 @@ body {
 }
 
 #sports {
-      direction: rtl;
     /* height: 70vh; */
     .matches {
         display: flex;
@@ -221,12 +220,4 @@ body {
   .sports-container {
     max-width: 100%;
   }
-}
-.matches,
-.sports-table {
-    display: none !important;
-}
-
-.sports-news {
-    display: block !important;
 }
